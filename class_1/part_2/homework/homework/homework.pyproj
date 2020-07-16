@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>5bf88d13-4d1b-476a-9e40-3893a8c3bad7</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>module1.py</StartupFile>
+    <StartupFile>prc_4.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -24,7 +24,16 @@
     <Compile Include="float.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="module1.py">
+    <Compile Include="function.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="prc_4.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="prc_3.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="recursion_sam1.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="newton_raphson.py">

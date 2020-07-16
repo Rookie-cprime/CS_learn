@@ -29,8 +29,8 @@ def gray_fpga(filename = '',pic = [[]],width = 0,height = 0):
     f = open(filename,'w')
     for i in range(height):
         for j in range(width):
-            f.write(pic[i][j])
-            f.writh('\n')
+            f.write(str(pic[i][j]))
+            f.write('\n')
     return  width*height
 
 
