@@ -21,7 +21,7 @@ def txt2array(filename = '',width = 0):
     col_cnt = 0
     for line in f.readlines():
         line = line.strip()
-        pic[col_cnt] = int(line)
+        pic[0][col_cnt] = int(line)
         col_cnt+=1
     return pic
 
@@ -29,7 +29,7 @@ def gray_fpga(filename = '',pic = [[]],width = 0,height = 0):
     f = open(filename,'w')
     for i in range(height):
         for j in range(width):
-            f.write(str(pic[i][j]))
+            f.write(str(bin(pic[i][j]))[2:])
             f.write('\n')
     return  width*height
 

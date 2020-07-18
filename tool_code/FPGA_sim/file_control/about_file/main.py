@@ -28,6 +28,14 @@ def pctofpga(folder,outpath,image_name,txt_name):
     t,thresh = cv2.threshold(gray_img,0,255,cv2.THRESH_BINARY+cv2.THRESH_TRIANGLE)
     cv2.imshow('thresh',thresh)
     return t
+def fpgatopc(folder,outpath,result_name,output_name):
+    txtpath = folder+result_name
+    outpath0= outpath+output_name
+    y = syx.txt2array(txtpath,256)
+    x = [i for i in range(256)]
+    plt.bar(x=x,height=y[0],align='edge',color='wheat',width=1)
+    plt.savefig(outpath0)
+    plt.show()
 
 
 
@@ -35,12 +43,20 @@ def pctofpga(folder,outpath,image_name,txt_name):
 
 
     
-def main():
+def main_0():
     image_name = '9.bmp' #可以更改
     txt_name   = '1.txt' #可以更改
     folder = 'B:/Github/CS_learn/tool_code/FPGA_sim/file_control/input_pic/'
     outpath = 'B:/Github/CS_learn/tool_code/FPGA_sim/file_control/output_data/'
     t = pctofpga(folder,outpath,image_name,txt_name)
+
+def main():
+    folder = 'B:/Github/CS_learn/tool_code/FPGA_sim/file_control/output_result/'
+    outpath = 'B:/Github/CS_learn/tool_code/FPGA_sim/file_control/output_result/'
+    result_name = 'result.txt'
+    output_name = 'result.jpg'
+    fpgatopc(folder,outpath,result_name,output_name)
+
     
 
 if __name__ == '__main__':
