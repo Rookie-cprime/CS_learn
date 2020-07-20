@@ -2,6 +2,11 @@ import numpy as np
 import os
 
 def txt2matrix(filename='',width = 0,height = 0):
+    """
+    Input:filename is the input txt filepath
+          width and height is the picture width and height
+    Return:a list of picture data match the col and row
+    """
     f = open(filename)
     row_cnt = 0
     col_cnt = 0
@@ -16,6 +21,9 @@ def txt2matrix(filename='',width = 0,height = 0):
     return pic
 
 def txt2array(filename = '',width = 0):
+    """
+    Return:a list of txt data
+    """
     f = open(filename)
     pic = np.zeros((1,width),dtype = np.int)
     col_cnt = 0
@@ -26,6 +34,9 @@ def txt2array(filename = '',width = 0):
     return pic
 
 def gray_fpga(filename = '',pic = [[]],width = 0,height = 0):
+    """
+    Return:generate the fpga sim picture data
+    """
     f = open(filename,'w')
     for i in range(height):
         for j in range(width):
