@@ -26,7 +26,7 @@ def pctofpga(folder,outpath,image_name,txt_name):
     plt.show()
     syx.gray_fpga(outpath1,gray_img,width,height)
     t,thresh = cv2.threshold(gray_img,0,255,cv2.THRESH_BINARY+cv2.THRESH_TRIANGLE)
-    cv2.imshow('thresh',thresh)
+    print(t)
     return t
 def fpgatopc(folder,outpath,result_name,output_name):
     txtpath = folder+result_name
@@ -43,14 +43,14 @@ def fpgatopc(folder,outpath,result_name,output_name):
 
 
     
-def main_0():
+def main():
     image_name = '9.bmp' #可以更改
     txt_name   = '1.txt' #可以更改
     folder = 'B:/Github/CS_learn/tool_code/FPGA_sim/file_control/input_pic/'
     outpath = 'B:/Github/CS_learn/tool_code/FPGA_sim/file_control/output_data/'
     t = pctofpga(folder,outpath,image_name,txt_name)
 
-def main():
+def main_0():
     folder = 'B:/Github/CS_learn/tool_code/FPGA_sim/file_control/output_result/'
     outpath = 'B:/Github/CS_learn/tool_code/FPGA_sim/file_control/output_result/'
     result_name = 'result.txt'

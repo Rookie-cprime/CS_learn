@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>5bf88d13-4d1b-476a-9e40-3893a8c3bad7</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>fibnocci.py</StartupFile>
+    <StartupFile>tower.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -46,6 +46,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="prc_1.py" />
+    <Compile Include="tower.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
