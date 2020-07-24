@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>263a6d19-db8e-4105-a2dd-ea72c4bc8f88</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>homework.py</StartupFile>
+    <StartupFile>ps4b.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -22,6 +22,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="homework.py" />
+    <Compile Include="ps4a.py" />
+    <Compile Include="ps4b.py" />
+    <Compile Include="test_ps4a.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
