@@ -48,7 +48,7 @@ class Person(Animal):
     def __str__(self):
         return 'rabbit: '+str(self.name)+': '+str(self.age)
 
-class Student(Person)
+
 jelly = Cat(1)
 jelly.set_name('JellyBelly') #cat: JellyBelly: 1
 print(jelly)
