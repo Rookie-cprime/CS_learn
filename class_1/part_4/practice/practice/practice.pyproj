@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>57a186f8-9018-435e-a270-c012a201bad3</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>hand.py</StartupFile>
+    <StartupFile>prac1.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -34,7 +34,17 @@
     <Compile Include="exam5.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="exam6.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="exam7.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="hand.py" />
+    <Compile Include="prac1.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ps6.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
