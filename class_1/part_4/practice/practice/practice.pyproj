@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>57a186f8-9018-435e-a270-c012a201bad3</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>prac1.py</StartupFile>
+    <StartupFile>ps6.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
