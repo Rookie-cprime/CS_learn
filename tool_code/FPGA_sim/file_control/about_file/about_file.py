@@ -1,5 +1,6 @@
 import numpy as np
 import os
+from PIL import Image,ImageDraw
 
 def txt2matrix(filename='',width = 0,height = 0):
     """
@@ -43,6 +44,20 @@ def gray_fpga(filename = '',pic = [[]],width = 0,height = 0):
             f.write(str(bin(pic[i][j]))[2:])
             f.write('\n')
     return  width*height
+
+def draw_pic(label_list = [],colors = {},pic = [[]],path = ''):
+    height = len(pic)
+    widht = len(pic[0])
+    output_img = Image.new('RGB',(width,height))
+    for val in label_list:
+        if val not in colors:
+            colors[val] = (random.randint(0,255), random.randint(0,255),random.randint(0,255))
+    for i in height:
+        for j in width:
+            output_img[i][j] = colors.get(pic[i][j],(0,0,0))
+    output_img.save(path)
+    output_img.show()
+    return True
 
 
         
