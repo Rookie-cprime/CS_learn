@@ -47,6 +47,29 @@ def pcbintofpga(folder,outpath,image_name,txt_name):
     height,width = np.shape(image)
     syx.binary(outpath_0,image,width,height)
 
+#Nrgb
+def nrgb_generate(folder,outpath,image_name):
+    picturepath = folder + image_name
+    r = outpath + 'r.txt'
+    g = outpath + 'g.txt'
+    b = outpath + 'b.txt'
+    nrgb = outpath + 'nrgb.txt'
+    f = open(nrgb,'w')
+    image = cv2.imread(picturepath)
+    height,width = np.shape(image[0])
+    syx.gray_fpga(r,image[0],height,width)
+    syx.gray_fpga(g,image[1],height,width)
+    syx.gray_fpga(b,image[2],height,width)
+    for i in range(height):
+        for j in range(width):
+            nr,ng,nb = 0,0,0
+            (nr,ng,nb) = syx.nrgb(image[0][i][j],image[1][i][j],image[2][i][j])
+            f.write('the nr = %d,the ng = %d,the nb = %d\n'%(nr,ng,nb))
+    return None
+
+
+
+
 
 
 
@@ -97,6 +120,13 @@ def main_2():
     outpath = 'B:/Github/CS_learn/tool_code/FPGA_sim/file_control/output_data/'
     t = pcbintofpga(folder,outpath,image_name,txt_name)
 
+def main_3():
+    """
+    a normal rgb picture convert to nrgb
+    """
+    folder = 'B:/Github/CS_learn/tool_code/FPGA_sim/file_control/pc_nrgb/pic/'
+    outpath = 'B:/Github/CS_learn/tool_code/FPGA_sim/file_control/pc_nrgb/result/'
+    nrgb_generate(folder,outpath,'test.bmp')
 
     
 
