@@ -56,14 +56,15 @@ def nrgb_generate(folder,outpath,image_name):
     nrgb = outpath + 'nrgb.txt'
     f = open(nrgb,'w')
     image = cv2.imread(picturepath)
-    height,width = np.shape(image[0])
-    syx.gray_fpga(r,image[0],height,width)
-    syx.gray_fpga(g,image[1],height,width)
-    syx.gray_fpga(b,image[2],height,width)
+    blue,green,red = cv2.split(image)
+    height,width,unit = np.shape(image)
+    syx.gray_fpga(r,red,height,width)
+    syx.gray_fpga(g,green,height,width)
+    syx.gray_fpga(b,blue,height,width)
     for i in range(height):
         for j in range(width):
             nr,ng,nb = 0,0,0
-            (nr,ng,nb) = syx.nrgb(image[0][i][j],image[1][i][j],image[2][i][j])
+            (nr,ng,nb) = syx.nrgb(image[i][j][2],image[i][j][1],image[i][j][0])
             f.write('the nr = %d,the ng = %d,the nb = %d\n'%(nr,ng,nb))
     return None
 
@@ -83,7 +84,7 @@ def main():
     Return: the gray picture data txt for fpga to simulation
     Return: the result of gray hist of pc
     """
-    image_name = '9.bmp' #可以更改
+    image_name = 'mvnr.png' #可以更改
     txt_name   = '1.txt' #可以更改
     folder = 'B:/Github/CS_learn/tool_code/FPGA_sim/file_control/input_pic/'
     outpath = 'B:/Github/CS_learn/tool_code/FPGA_sim/file_control/output_data/'
@@ -126,12 +127,12 @@ def main_3():
     """
     folder = 'B:/Github/CS_learn/tool_code/FPGA_sim/file_control/pc_nrgb/pic/'
     outpath = 'B:/Github/CS_learn/tool_code/FPGA_sim/file_control/pc_nrgb/result/'
-    nrgb_generate(folder,outpath,'test.bmp')
+    nrgb_generate(folder,outpath,'test.jpg')
 
     
 
 if __name__ == '__main__':
-    main_1()
+    main_3()
 
 
 

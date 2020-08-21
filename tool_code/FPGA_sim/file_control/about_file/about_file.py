@@ -88,7 +88,8 @@ def draw_pic(label_list = [],colors = {},pic = [[]],path = ''):
     return True
 
 def nrgb(r = 0,g = 0,b = 0):
-    sum = r+g+b
+    sum = 0
+    sum = int(r)+int(g)+int(b)
     if sum == 0:
         return (0,0,0)
     else:
