@@ -61,12 +61,14 @@ def nrgb_generate(folder,outpath,image_name):
     syx.gray_fpga(r,red,height,width)
     syx.gray_fpga(g,green,height,width)
     syx.gray_fpga(b,blue,height,width)
+    nr_0 = np.zeros((height,width),dtype = np.int)
     for i in range(height):
         for j in range(width):
             nr,ng,nb = 0,0,0
             (nr,ng,nb) = syx.nrgb(image[i][j][2],image[i][j][1],image[i][j][0])
             f.write('the nr = %d,the ng = %d,the nb = %d\n'%(nr,ng,nb))
-    return None
+            nr_0[i][j] = nr
+    return nr_0
 
 
 
@@ -127,7 +129,11 @@ def main_3():
     """
     folder = 'B:/Github/CS_learn/tool_code/FPGA_sim/file_control/pc_nrgb/pic/'
     outpath = 'B:/Github/CS_learn/tool_code/FPGA_sim/file_control/pc_nrgb/result/'
-    nrgb_generate(folder,outpath,'test.jpg')
+    nr = nrgb_generate(folder,outpath,'test.jpg')
+    plt.hist(np.ravel(nr),256,[0,256])
+    plt.savefig(outpath + 'nr.jpg')
+    plt.show()
+
 
     
 
