@@ -1,0 +1,19 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname flower-animation) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
+(require 2htdp/image)
+(require 2htdp/universe)
+
+;;a flower planting program
+
+;; Constants
+;; =========
+(define WIDHT 400)
+(define HEIGHT 600)
+(define MTS (empty-scene WIDTH HEIGHT "ligntgreen"))
+
+(define CENTER (circle 15 "solid" "lightyellow"))
+(define PETAL (ellipse 30 50 "solid" "purple"))
+(define FLOWER
+  (overlay (above CENTER (rectangle 1 10 0 "white"))
+           (overlay/align "center" "top" (above (beside (rotate 216 PETAL))))
