@@ -134,11 +134,14 @@ def main_3():
     plt.savefig(outpath + 'nr.jpg')
     plt.show()
 
+def main_4():
+    path = 'B:/Github/CS_learn/tool_code/FPGA_sim/file_control/output_data/outdata.coe'
+    syx.coe(path)
 
     
 
 if __name__ == '__main__':
-    main_1()
+    main_4()
 
 
 

@@ -1,7 +1,10 @@
 import numpy as np
 import os
 import random
+import sys
+from math import *
 from PIL import Image,ImageDraw
+
 
 def txt2matrix(filename='',width = 0,height = 0):
     """
@@ -95,8 +98,57 @@ def nrgb(r = 0,g = 0,b = 0):
     else:
         return(r*256//sum,g*256//sum,b*256//sum)
 
+def coe(path = ''):
+    f = open(path+'outdata.coe','w')
+    f.write('memory_initialization_radix = 2;\n')
+    f.write('memory_initialization_vector =\n')
+    for i in range(65536):
+        if(i == 0):
+            f.write('00000000000000000000')
+            f.write('\n')
+        elif(i == 65535):
+            a = log10(i)
+            f.write(fpga_log10(c = a)+';')         
+        else:
+            a = log10(i)
+            f.write(fpga_log10(c = a)+',')
+            f.write('\n')
+
+
+
 
         
+def fpga_log10(c = 0,b_num = 20):
+    c = c*131072
+    c = int(c)
+    c = bin(c)
+    c = c[2:]
+    result = ''
+    num = b_num - len(c)
+    for i in range(num):
+        c = '0' + c
+    result = result + c
+    return result
 
 
+
+
+#def fpga_log10(c = 0.0,b_num = 16):
+#    a = int(c)
+#    b = c-a
+#    result = ''
+#    c = bin(a)
+#    if(len(c)==3):
+#        result = result + '00'+ c[2:3]
+#    elif(len(c) == 4):
+#        result = result + '0'+ c[2:4]
+#    elif(len(c) == 5):
+#        result = result + c[2:5]
+#    else:
+#        print('somethin wrong')
+#    for i in range(b_num):
+#        b *= 2
+#        result = result + str(int(b))
+#        b = b - int(b)
+#    return result
 
