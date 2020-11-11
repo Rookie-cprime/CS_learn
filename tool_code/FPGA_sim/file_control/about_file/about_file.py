@@ -114,6 +114,24 @@ def coe(path = ''):
             f.write(fpga_log10(c = a)+',')
             f.write('\n')
 
+def coe2(path = ''):
+    f = open(path+'outdata2.coe','w')
+    f.write('memory_initialization_radix = 2;\n')
+    f.write('memory_initialization_vector =\n')
+    for i in range(int(1048576/8)):
+        if(i == 1048576//8 - 1):
+            f.write('1111111111111111;')
+            f.write('\n')      
+        else:
+            a =8*i/131072
+            a = 10**(a)
+            if a <= 65535:
+                f.write(fpga_exp10(c = a)+',')
+                f.write('\n')
+            else:
+                f.write('1111111111111111,')
+                f.write('\n')      
+
 
 
 
@@ -129,6 +147,19 @@ def fpga_log10(c = 0,b_num = 20):
         c = '0' + c
     result = result + c
     return result
+
+def fpga_exp10(c = 0,b_num = 16):
+        c = int(c)
+        c= bin(c)
+        c = c[2:]
+        result = ''
+        num = b_num - len(c)
+        for i in range(num):
+            c = '0' + c
+        result = result + c
+        return result
+        
+
 
 
 

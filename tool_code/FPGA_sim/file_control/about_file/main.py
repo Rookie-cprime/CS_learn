@@ -136,7 +136,7 @@ def main_3():
 
 def main_4():
     path = 'B:/Github/CS_learn/tool_code/FPGA_sim/file_control/output_data/outdata.coe'
-    syx.coe(path)
+    syx.coe2(path)
 
     
 
