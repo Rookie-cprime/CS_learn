@@ -43,3 +43,58 @@ fun dates_in_months(dates:(int*int*int) list,months:int list)=
 	then new_dates
 	else append(dates_in_month(dates,(hd months)),dates_in_months(dates,(tl months)))
     end
+
+fun get_nth(l,nth:int)=
+    if nth = 1
+    then (hd l)
+    else get_nth((tl l),nth-1)
+
+fun date_to_string(dates:int*int*int)=
+let
+    val month_l = ["January","February","March","April","May","June","July","August", "September","October","November","December"]
+in
+    get_nth(month_l,#2 dates)^" "^Int.toString(#3 dates)^", "^Int.toString(#1 dates)
+end
+
+fun number_before_reaching_sum(sum:int,num_list:int list)=
+    let
+    fun sum_list(x0:int,x1:int,x2:int list)=
+	if x0 >= sum
+        then x1
+        else sum_list(x0+(hd (tl x2)),(hd x2),tl x2)
+    in
+       sum_list(hd num_list,0,num_list)
+    end
+
+fun what_month(day:int)=
+    let
+	val l = [31,28,31,30,31,30,31,31,30,31,30,31]
+        fun sum_list(x0:int,x1:int,x2:int list)=
+	    if x0 >= day
+	    then x1
+            else sum_list(x0+(hd (tl x2)),x1+1,tl x2)
+    in
+	sum_list(hd l,1,l)
+    end
+
+fun month_range(from:int,to:int)=
+    let
+	fun count_down(x1:int,x2:int list)=
+	    if x1<from
+	    then x2
+            else count_down(x1-1,what_month(x1)::x2)
+    in
+	count_down(to,[])
+    end
+
+fun oldest(dates:(int*int*int) list)=
+    let
+       fun older(datess:(int*int*int) list,date:(int*int*int))=
+	   if null datess
+	   then date
+           else if is_older(date,hd datess)
+           then older(tl datess,date)
+           else older(tl datess,hd datess)
+    in
+	SOME(older(tl dates,hd dates))
+    end
