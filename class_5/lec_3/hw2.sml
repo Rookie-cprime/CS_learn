@@ -72,3 +72,71 @@ datatype move = Discard of card | Draw
 exception IllegalMove
 
 (* put your solutions for problem 2 here *)
+
+fun card_color pattern =
+    case pattern of
+	(Clubs,_) => Black
+     | (Spades,_) => Black
+     | (_,_) =>Red
+
+fun card_value pattern =
+    case pattern of
+	(_,Jack) => 11
+     | (_,Queen) => 12
+     | (_,King) => 13
+     | (_,Ace) => 1
+     | (_,Num x) => x
+
+fun remove_card (cl,c,e)=
+    let
+	fun hp1 pattern =
+	    case pattern of
+		([],_,res) => raise e  
+	     | (x::xs',y,res1) => if x = y then list_append(res1,xs') else
+				 hp1(xs',y,x::res1)
+    in
+	hp1 (cl,c,[])
+    end 
+
+fun all_same_color pattern =
+    case pattern of
+	[] => true
+     | x::[] => true
+     | y::z::xs' => if card_color(y) = card_color(z) then all_same_color(z::xs') else false
+
+fun sum_cards (cl) = 
+    let
+	fun hp1 pattern =
+	    case pattern of
+		([],acc) => acc
+	     | (x::xs',acc1) => hp1 (xs',acc1+card_value(x))
+    in
+	hp1(cl,0)
+    end
+
+fun score (cl,goal)=
+    let
+	fun hp1 pattern = 
+	    case pattern of
+		x => if x>goal then 3*(x-goal) else goal-x
+    in
+	hp1(sum_cards(cl))
+    end
+ 
+
+fun officiate (cl,ml,goal) =
+    let 
+	fun hp1 pattern =      (*card_list,move_list,held_list,sum*)
+	    case pattern of
+		([],_,hl) =>if all_same_color(hl) then score(hl,goal) div 2 else score (hl,goal)
+	     | (cl,[],hl1) =>if all_same_color(hl1) then score (hl1,goal) div 2 else score (hl1,goal)
+	     | (x::xs',m::ms',hl2) => if sum_cards(hl2) > goal then if all_same_color(hl2) then score(hl2,goal) div 2 else score(hl2,goal) else
+					  case m of
+					      Draw => hp1(xs',ms',x::hl2)
+					    | Discard card => hp1(x::xs',ms',remove_card(hl2,card,IllegalMove))
+    in
+	hp1(cl,ml,[])
+    end
+
+
+		
