@@ -84,7 +84,7 @@ fun card_value pattern =
 	(_,Jack) => 11
      | (_,Queen) => 12
      | (_,King) => 13
-     | (_,Ace) => 1
+     | (_,Ace) => 11
      | (_,Num x) => x
 
 fun remove_card (cl,c,e)=
