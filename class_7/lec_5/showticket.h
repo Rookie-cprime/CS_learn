@@ -96,8 +96,7 @@ class SportTicket:public ShowTicket{
 private:
     bool beer;
 public:
-    SportTicket(string row,string seat){
-        ShowTicket(row,seat);
+    SportTicket(string row,string seat):ShowTicket(row,seat){
         this->beer = false;
     }
 
@@ -116,4 +115,11 @@ public:
         string b = (is_sold())?"sold":"available";
         return  get_row() + " " + get_seat() + " " + b + " " + c;
     }
+};
+
+class TicketSales{
+    public:
+        string print_ticket(ShowTicket *mytic){
+            return mytic->print_ticket();
+        }
 };

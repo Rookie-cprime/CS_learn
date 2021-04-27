@@ -3,15 +3,16 @@
 #include "showticket.h"
 using namespace std;
 
-int main()
-{
-       SportTicket myticket1("AA","101");
-         SportTicket myticket2("AA","102");
-           myticket1.sell_seat();
-             myticket2.sell_seat();
-               myticket2.sell_beer();
-                 cout << myticket1.print_ticket() << endl;
-                   cout << myticket2.print_ticket() << endl;
-                     return 0;
+int main(){
+
+  TicketSales ts;
+  ShowTicket myticket1("AA","101");
+  SportTicket myticket2("AA","102");
+  myticket1.sell_seat();
+  myticket2.sell_seat();
+  myticket2.sell_beer();
+  cout << ts.print_ticket(&myticket1)<<endl;
+  cout << ts.print_ticket(&myticket2)<<endl;
+  return 0;
 }
 
